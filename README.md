@@ -3,6 +3,8 @@
 A Minecraft plugin that adds the Skywars minigame.
 Compatible with Bukkit and Spigot, from versions 1.8 upwards.
 
+
+Updated via Gemini CLI for personal use; feel free to use as wanted. No help will be given if requested. 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/786de08d9dfa4332bc1e15e8f4373bd6)](https://www.codacy.com/gh/TheBrunoRM/Skywars/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TheBrunoRM/Skywars&amp;utm_campaign=Badge_Grade)
 [![GitHub last commit](https://img.shields.io/github/last-commit/TheBrunoRM/Skywars.svg)](https://github.com/TheBrunoRM/Skywars/commits/master)
 [![version](https://img.shields.io/github/release/TheBrunoRM/Skywars.svg?colorB=7418f5)](https://github.com/TheBrunoRM/Skywars/releases/latest)
