@@ -46,6 +46,7 @@ public class ConfigMenu implements Listener {
 	static String clearName = "&c&lClear";
 	static String teleportName = "&6&lTeleport";
 	static String chestsName = "&6&lFill chests";
+	static String centerChestsName = "&6&lFill center chests";
 
 	public static HashMap<Player, Location> playerLocations = new HashMap<Player, Location>();
 	public static HashMap<Player, Arena> currentArenas = new HashMap<Player, Arena>();
@@ -158,6 +159,8 @@ public class ConfigMenu implements Listener {
 		InventoryUtils.addItem(inventory, XMaterial.COMPASS.parseMaterial(), 22, teleportName);
 
 		InventoryUtils.addItem(inventory, XMaterial.CHEST.parseMaterial(), 23, chestsName);
+
+		InventoryUtils.addItem(inventory, XMaterial.ENDER_CHEST.parseMaterial(), 24, centerChestsName);
 
 	}
 
@@ -284,6 +287,12 @@ public class ConfigMenu implements Listener {
 		if (name.equals(Messager.color(chestsName))) {
 			currentArena.fillChests();
 			player.sendMessage("Chests filled");
+			return;
+		}
+
+		if (name.equals(Messager.color(centerChestsName))) {
+			currentArena.fillCenterChests();
+			player.sendMessage("Center chests filled");
 			return;
 		}
 

@@ -1,0 +1,30 @@
+items:
+  # weapons
+  - DIAMOND_SWORD
+  - IRON_SWORD
+  - BOW
+  - ARROW 8
+  # tools
+  - type: DIAMOND_AXE
+    name: "&aLumberjack's Axe"
+    lore:
+    - "&eA very powerful axe"
+    - "&ethat can harvest any tree."
+  # blocks
+  - OAK_PLANKS 32
+  - COBBLESTONE 32
+  # food
+  - GOLDEN_APPLE 4
+  - STEAK 32
+  # armor
+  - DIAMOND_HELMET
+  - DIAMOND_CHESTPLATE
+  - IRON_LEGGINGS
+  - IRON_BOOTS
+  # throwables
+  - EGG 4
+  - SNOW_BALL 4
+  - ENDER_PEARL 2
+  # buckets
+  - LAVA_BUCKET
+  - WATER_BUCKET

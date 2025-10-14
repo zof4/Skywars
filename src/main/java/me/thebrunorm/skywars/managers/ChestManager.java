@@ -32,7 +32,12 @@ public class ChestManager {
 		final Inventory inventory = chest.getBlockInventory();
 		inventory.clear();
 
-		final YamlConfiguration config = Skywars.get().getChestManager().getChestConfigurations().get("normal");
+		final String configName = overpowered ? "center" : "normal";
+		final YamlConfiguration config = Skywars.get().getChestManager().getChestConfigurations().get(configName);
+		if (config == null) {
+			Skywars.get().sendDebugMessage("&cCould not find chest configuration: " + configName);
+			return;
+		}
 		for (final Object a : config.getList("items")) {
 			final ItemStack item = ConfigurationUtils.parseItemFromConfig(a);
 			if (item == null)

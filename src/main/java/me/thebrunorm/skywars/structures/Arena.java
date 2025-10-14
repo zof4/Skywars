@@ -653,10 +653,6 @@ public class Arena {
 	}
 
 	public void clear() {
-		this.clear(true);
-	}
-
-	public void clear(boolean remove) {
 		this.cancelTimer();
 		Skywars.get().sendDebugMessage("Clearing arena for map " + this.map.getName());
 		for (final SkywarsUser player : this.getUsers()) {
@@ -668,8 +664,7 @@ public class Arena {
 		this.setStatus(ArenaStatus.WAITING);
 		this.countdown = -1;
 
-		if (remove)
-			ArenaManager.removeArena(this);
+		ArenaManager.removeArena(this);
 	}
 
 	void removeHolograms() {
@@ -950,8 +945,37 @@ public class Arena {
 			if (!(block.getState() instanceof Chest))
 				continue;
 			final Location loc = block.getLocation();
-			ChestManager.fillChest(loc,
-					SkywarsUtils.distance(this.getCenterBlock(), loc.toVector()) < this.map.getCenterRadius());
+			final boolean overpowered = SkywarsUtils.distance(this.getCenterBlock(), loc.toVector()) < this.map
+					.getCenterRadius();
+			ChestManager.fillChest(loc, overpowered);
+		}
+	}
+
+	public void fillCenterChests() {
+		if (this.chests.size() <= 0) {
+			this.chests.clear();
+			for (final Vector chestPos : this.getMap().getChests().values()) {
+				final Block block = this.getWorld().getBlockAt(chestPos.toLocation(this.getWorld()));
+				if (block.getState().getType() != XMaterial.CHEST.parseMaterial())
+					continue;
+				this.chests.add((Chest) block.getState());
+			}
+		}
+
+		if (this.chests.size() <= 0) {
+			Skywars.get().sendDebugMessage("&cCould not retrieve chest information from config: %s",
+					this.getMap().getName());
+			this.calculateChests();
+		}
+
+		for (final Chest chest : this.chests) {
+			final Block block = chest.getBlock();
+			if (!(block.getState() instanceof Chest))
+				continue;
+			final Location loc = block.getLocation();
+			if (SkywarsUtils.distance(this.getCenterBlock(), loc.toVector()) < this.map.getCenterRadius()) {
+				ChestManager.fillChest(loc, true);
+			}
 		}
 	}
 
